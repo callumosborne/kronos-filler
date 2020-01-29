@@ -11,9 +11,10 @@ import os
 """
 Exit codes:
 0: Success
-1: Incorrect Login
-2: No Timesheets to fill in
-3: Timesheet unsuccessfully filled in
+1: No Timesheets to fill in
+2: Incorrect Login
+3: No One Time Code Given During Login
+4: Timesheet unsuccessfully filled in
 """
 
 LOGIN_FILE = os.path.join(sys.path[0], "login.txt")
@@ -42,7 +43,6 @@ class Kronos:
 
     def login(self, silent=False):
 
-
         if not silent:
             print('Logging in...')
 
@@ -65,11 +65,11 @@ class Kronos:
 
         if self.incorrect_login():
             print('\nIncorrect login.\n')
-            sys.exit(1)
+            sys.exit(2)
 
         if self.reached_virtual_code():
             if not self.fill_virtual_code():
-                sys.exit(2)
+                sys.exit(3)
 
         if not silent:
             print('Logged in successfully.')
@@ -91,7 +91,7 @@ class Kronos:
 
     def fill_virtual_code(self):
 
-        time_taken = 60
+        time_taken = 120
 
         email = self.browser.find_elements_by_class_name("txtLabel")[10].text
 
@@ -249,7 +249,7 @@ def main():
 
     if kronos.is_timesheet_filled():
         print('\nTimesheet already completed, exiting...\n')
-        sys.exit(3)
+        sys.exit(1)
 
     print('Complete timesheet...')
 
@@ -265,5 +265,6 @@ def main():
         sys.exit(0)
     else:
         print('\nFailed to complete timesheet.\n')
+        sys.exit(4)
 
 main()

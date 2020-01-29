@@ -49,3 +49,6 @@ or
 python3 run.py
 ```
 
+### Virtual Code:
+
+The first time you run the program you will have to enter the one time passcode sent to your email, it will then save the cookies so, it does not require the code again (if logged into every 30 days).
