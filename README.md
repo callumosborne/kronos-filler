@@ -1,7 +1,7 @@
 # Kronos Filler
 
 It will automatcially fill in the kronos as working 8 standard hours a day for 5 days a week, 9am until 12:00 and then 1pm until 5pm. 
-It will identify Holidays and PTO and will verify and the end of the program that it has been successfully completed.
+It will identify Holidays and PTO and will verify at the end of the program that it has been successfully completed.
 It will then submit it for approval.
 
 ### Within a Mac or Linux terminal:
