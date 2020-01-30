@@ -46,7 +46,7 @@ class Kronos:
         if not silent:
             print('Logging in...')
 
-        pickle.dump( self.browser.get_cookies() , open(COOKIES_FILE,"wb"))
+        
 
         # Get login elements
         username_element = self.browser.find_element_by_name("Username")
@@ -73,6 +73,8 @@ class Kronos:
 
         if not silent:
             print('Logged in successfully.')
+
+        pickle.dump( self.browser.get_cookies() , open(COOKIES_FILE,"wb"))
 
     def incorrect_login(self):
 
