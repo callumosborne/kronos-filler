@@ -144,6 +144,8 @@ class Kronos:
         self.fill_ts("resultRow1")
         self.fill_ts("resultRow0")
 
+        self.submit_timesheet()
+
     def fill_ts(self, rows_name):
 
         row_no = 0
