@@ -26,7 +26,7 @@ class Kronos:
     def __init__(self):
 
         # Select False if you want to see the browser automatically fill the sheet in
-        headless = False
+        headless = True
 
         options = Options()
         options.headless = headless
