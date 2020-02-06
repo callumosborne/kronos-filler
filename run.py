@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
 import pickle
 import select
 import time
@@ -25,7 +26,7 @@ class Kronos:
     def __init__(self):
 
         # Select False if you want to see the browser automatically fill the sheet in
-        headless = True
+        headless = False
 
         options = Options()
         options.headless = headless
@@ -137,13 +138,6 @@ class Kronos:
         return True
 
     def fill_timesheet(self):
-
-        time.sleep(1)
-
-        self.browser.switch_to.frame("ADMIN_CENTER")
-
-        get_timesheet = self.browser.find_element_by_link_text("My Current Timesheet")
-        get_timesheet.click()
 
         time.sleep(1)
 
