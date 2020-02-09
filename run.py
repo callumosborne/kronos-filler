@@ -1,10 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.firefox.options import Options
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
 import pickle
-import select
 import time
 import sys
 import os
@@ -35,8 +32,6 @@ class Kronos:
         # Open url
         self.browser.get("https://secure3.entertimeonline.com/ta/6119326.login?rnd=AAD")
 
-        self.wait = WebDriverWait(self.browser, 10)
-
         if os.path.isfile(COOKIES_FILE):
             cookies = pickle.load(open(COOKIES_FILE, "rb"))
             for cookie in cookies:
@@ -44,10 +39,10 @@ class Kronos:
 
     def login(self, silent=False):
 
+        time.sleep(5)
+
         if not silent:
             print('Logging in...')
-
-        
 
         # Get login elements
         username_element = self.browser.find_element_by_name("Username")
@@ -79,7 +74,7 @@ class Kronos:
 
     def incorrect_login(self):
 
-        time.sleep(1)
+        time.sleep(5)
 
         errors = self.browser.find_elements_by_class_name("validationMessageError")
         if len(errors) != 0:
@@ -88,7 +83,7 @@ class Kronos:
 
     def reached_virtual_code(self):
 
-        time.sleep(1)
+        time.sleep(5)
 
         return "Configure Virtual Code Settings" in self.browser.page_source
 
@@ -139,7 +134,7 @@ class Kronos:
 
     def fill_timesheet(self):
 
-        time.sleep(1)
+        time.sleep(5)
 
         self.fill_ts("resultRow1")
         self.fill_ts("resultRow0")
@@ -207,6 +202,8 @@ class Kronos:
         to_time.send_keys(time_out)
 
     def submit_timesheet(self):
+
+        time.sleep(5)
 
         print('Submitting timesheet...')
 
